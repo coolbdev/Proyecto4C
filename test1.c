@@ -1,5 +1,5 @@
-
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #define capacidad 10 //A2 B3 C5
 #define claseA 2
@@ -7,8 +7,8 @@
 #define claseC 5
 typedef struct
 {
-	//char nombre[33];
-	//char dni[9];
+	char nombre[33];
+	char dni[9];
 }Pasaje;
 
 void sendToDatabase(FILE *fichero, char clase, int asiento);
@@ -111,6 +111,13 @@ int main()
 Pasaje leerDatos()
 {
 	Pasaje pasaje;
+	char nombre[20];
+	char dni[8];
+	int i;
+	printf("\nIngrese el nombre :");
+	scanf("%s",&pasaje.nombre);
+	printf("\nIngrese su documento de identidad: ");
+	scanf("%s,&pasaje.dni");
 	return pasaje;
 }
 
@@ -119,7 +126,9 @@ void imprimir(Pasaje pasaje, char clase, int asiento)
 	printf("\n******************************************\n");
 	//imprime nombre
 	printf("Clase:    %c\n",clase);
-	printf("Asiento:  %d",asiento);
+	printf("Asiento:  %d\n",asiento);
+	printf("Nombre:   %s", pasaje.nombre);
+	printf("DNI:      %s",pasaje.dni);
 	printf("\n******************************************\n");
 }
 void sendToDatabase(FILE *fichero, char clase, int asiento)
